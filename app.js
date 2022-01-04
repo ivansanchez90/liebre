@@ -2,10 +2,11 @@ const path = require('path');
 const express = require('express');
 const app = express();
 app.use(express.static('public'));
-const PORT = 3001
 
-app.listen(PORT, ()=>{
-    console.log(`Servidor funcionando puerto ${PORT}`);
+app.set('port', process.env.PORT || 3000)
+
+app.listen(app.get('port'), ()=>{
+    console.log('On http://localhost:'+app.get('port'));
 });
 
 app.get('/', (req,res)=>{
